@@ -1,6 +1,6 @@
 # discursos-Fidel-Castro-analisis_en_R
 
-Trabajo fin de curso de la _Asignatura Análisis de textos y Estilometría usando R_, del Máster en Humanidades Digitales de la UNED. 
+Trabajo fin de curso de la asignatura _Análisis de textos y Estilometría usando R_, del Máster en Humanidades Digitales de la UNED. 
 Realizado en el verano de 2020.
 
 ## Textos a analizar
