@@ -26,16 +26,26 @@ Estos son los capítulos del trabajo:
 Script_01-web_scraping.R
 
 La dirección web que recoge los enlaces a los textos con los que he trabajado es www.cuba.cu/gobierno/discursos/
+
 Inspeccionando el HTML de la página veo que los enlaces que llevan a los discursos tienen la misma estructura:
+
 ...
 http://www.cuba.cu/gobierno/discursos/1998/esp/f040998e.html
+
 http://www.cuba.cu/gobierno/discursos/1999/ing/f030999i.html
+
 http://www.cuba.cu/gobierno/discursos/2000/ale/f290300a.html
+
 http://www.cuba.cu/gobierno/discursos/2001/fra/f110801f.html
+
 http://www.cuba.cu/gobierno/discursos/2002/ita/n210302t.html
+
 http://www.cuba.cu/gobierno/discursos/2002/rus/f300802r.html
+
 http://www.cuba.cu/gobierno/discursos/2002/ara/f081202b.html
+
 ...
+
 
 Estas URL aportan varios datos importantes:
 
