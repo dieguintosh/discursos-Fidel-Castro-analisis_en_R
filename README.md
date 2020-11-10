@@ -120,7 +120,7 @@ En este capítulo he asociado cada palabra de cada discurso a su período corres
 
 El interés de estos gráficos está en apreciar las palabras –y por tanto los temas– que han estado presentes en cada Período, cuáles han de dejado de ser importantes y cuáles han entrado en los discursos con el paso de los años.
 
-## Capítulo V: PoS Tagging, desambiguación léxica, etiquetado gramatical 
+### Capítulo V: PoS Tagging, desambiguación léxica, etiquetado gramatical 
 
 > El código de este capítulo se encuentra en el archivo:
 Script_05-PoStagging.R
