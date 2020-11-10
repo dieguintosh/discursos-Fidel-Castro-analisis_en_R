@@ -30,6 +30,7 @@ La dirección web que recoge los enlaces a los textos con los que he trabajado e
 Inspeccionando el HTML de la página veo que los enlaces que llevan a los discursos tienen la misma estructura:
 
 ...
+
 http://www.cuba.cu/gobierno/discursos/1998/esp/f040998e.html
 
 http://www.cuba.cu/gobierno/discursos/1999/ing/f030999i.html
@@ -83,166 +84,106 @@ En la segunda parte de este script he agrupado los archivos por años, de modo q
 
 ### Capítulo II: Análisis cuantitativo 
 
-El código de este capítulo se encuentra en el archivo:
+>El código de este capítulo se encuentra en el archivo:
 Script_02 Analisis_Cuantitativo.R
 
 Este capítulo simplemente hace una reorganización de los discursos en tablas y un conteo de palabras.
 
-    • cantidad_palabras_porAnno.jpeg
+### Capítulo III: Palabras vacías 
 
-
-
-Capítulo III: Palabras vacías 
-
-El código de este capítulo se encuentra en el archivo:
+> El código de este capítulo se encuentra en el archivo:
 Script_03 Palabras-vacias.R
 
 Casi todos los archivos comienzan con una fórmula muy parecida a este ejemplo:
-"Discurso pronunciado por el Comandante en Jefe Fidel Castro Ruz, Primer Secretario del Comité Central del Partido Comunista de Cuba y Presidente de los Consejos de Estado y de Ministros, en la clausura del VIII Congreso de la FEEM, en el Palacio de las Convenciones, el 6 de diciembre de 1991."
-Muchas de estas palabras (discurso, pronunciado, Comandante, Jefe, Fidel, Castro, Ruz...) no tiene sentido que estén dentro de los análisis, por lo que he creado una pequeña lista que trata de limpiar la mayoría de estos encabezamientos.
+
+_"Discurso pronunciado por el Comandante en Jefe Fidel Castro Ruz, Primer Secretario del Comité Central del Partido Comunista de Cuba y Presidente de los Consejos de Estado y de Ministros, en la clausura del VIII Congreso de la FEEM, en el Palacio de las Convenciones, el 6 de diciembre de 1991."_
+
+Muchas de estas palabras (_discurso, pronunciado, Comandante, Jefe, Fidel, Castro, Ruz..._) no tiene sentido que estén dentro de los análisis, por lo que he creado una pequeña lista que trata de limpiar la mayoría de estos encabezamientos.
+
 Por otro lado, las personas que hicieron la transcripción anotaron entre paréntesis comentarios como aplausos, ovación... que también considero eliminables en este contexto.
+
 Tras el vaciado, se realiza un gráfico con las palabras más usadas. He realizado dos gráficos, modificando el filtro que selecciona las palabras más usadas (más de 5.000 apariciones o más de 10.000 apariciones)
 
+En ambos gráficos se aprecia como las tres palabras más repetidas (_pueblo, país, revolución_) lo son con bastante diferencia sobre el resto, y tienen, desde luego, una simbología muy clara en el contexto político del régimen cubano.
 
+### Capítulo IV: Comparación de Léxicos 
 
-
-
-
-
-
-
-
-    • 10000_apariciones.jpeg
-      
-    • 5000_apariciones.jpeg
-
-En ambos gráficos se aprecia como las tres palabras más repetidas (pueblo, país, revolución) lo son con bastante diferencia sobre el resto, y tienen, desde luego, una simbología muy clara en el contexto político del régimen cubano.
-
-Capítulo IV: Comparación de Léxicos 
-
-El código de este capítulo se encuentra en el archivo:
+> El código de este capítulo se encuentra en el archivo:
 Script_04-comparacion_lexicos.R
+
 Para establecer comparaciones he dividido los discursos en tres períodos, basándome en acontecimientos de la historia reciente de Cuba:
-    • Periodo I: de 1959 a 1990. Triunfo de la Revolución y desarrollo del estado cubano moderno
-    • Periodo II: 1991 a 2000. El llamado Período Especial, una severa crisis económica motivada por la disolución de la Unión Soviética.
-    • Período III: de 2001 a 2008, año en el que Fidel Castro renunció al poder por motivos de salud.
-En este capítulo he asociado cada palabra de cada discurso a su período correspondiente, y he realizado dos gráficos comparativos, uno de frecuencia relativa de aparición de palabras y otro de frecuencia absoluta. 
-    • frecuencia_relativa.jpeg
-      
-      
-    • frecuencia_absoluta.jpeg
+* Periodo I: de 1959 a 1990. Triunfo de la Revolución y desarrollo del estado cubano moderno
+* Periodo II: 1991 a 2000. El llamado Período Especial, una severa crisis económica motivada por la disolución de la Unión Soviética.
+* Período III: de 2001 a 2008, año en el que Fidel Castro renunció al poder por motivos de salud.
 
-El interés de estos gráficos está en apreciar las palabras –y por tanto los temas– que han estado presentes en cada Período, cuáles han de dejado de ser importantes y cuáles han entrado en los discursos con el paso de los años. 
-Capítulo V: PoS Tagging, desambiguación léxica, etiquetado gramatical 
+En este capítulo he asociado cada palabra de cada discurso a su período correspondiente, y he realizado dos gráficos comparativos, uno de frecuencia relativa de aparición de palabras y otro de frecuencia absoluta.
 
-El código de este capítulo se encuentra en el archivo:
+El interés de estos gráficos está en apreciar las palabras –y por tanto los temas– que han estado presentes en cada Período, cuáles han de dejado de ser importantes y cuáles han entrado en los discursos con el paso de los años.
+
+## Capítulo V: PoS Tagging, desambiguación léxica, etiquetado gramatical 
+
+> El código de este capítulo se encuentra en el archivo:
 Script_05-PoStagging.R
 
-Utilización de la librería udpipe. En este capítulo he aplicado este modelo de análisis a los discursos agrupados por períodos.
+Utilización de la librería **udpipe**. En este capítulo he aplicado este modelo de análisis a los discursos agrupados por períodos.
 A la hora de obtener gráficos comparativos he realizado uno por sustantivos lematizados y otro por verbos (sin verbos auxiliares).
 
-    • sustantivos_por_periodo.jpeg
+La comparativa de verbos por períodos no me parece que aporte datos interesantes. En cambio en la comparativa de sustantivos puede verse la evolución temporal de algunos términos con mucho trasfondo político (_trabajo, trabajador, obrero, lucha, esfuerzo… o dólar_).
 
+### Capítulo VI: Colocación y coocurrencia. Redes Léxicas.
 
-
-
-
-    • verbos_por_periodo.jpeg
-
-La comparativa de verbos por períodos no me parece que aporte datos interesantes. En cambio en la comparativa de sustantivos puede verse la evolución temporal de algunos términos con mucho trasfondo político (trabajo, trabajador, obrero, lucha, esfuerzo… o dólar).
-
-Capítulo VI: Colocación y coocurrencia. Redes Léxicas. 
-
-El código de este capítulo se encuentra en el archivo:
+>El código de este capítulo se encuentra en el archivo:
 Script_06-coocurrencias_bigramas.R
 
-Primera Parte.- En la primera parte de este capítulo he encontrado, vaciado y contado los bigramas que aparecen en todos los discursos, organizados por períodos. He creado dos gráficos, uno de Frecuencia Absoluta y otro de Frecuencia Relativa de aparición de bigramas por Período:
+**Primera Parte.-** En la primera parte de este capítulo he encontrado, vaciado y contado los bigramas que aparecen en todos los discursos, organizados por períodos. He creado dos gráficos, uno de Frecuencia Absoluta y otro de Frecuencia Relativa de aparición de bigramas por Período:
 
-    • bigramas_frecuencia_absoluta.jpeg
+En ambos gráficos se aprecia ya muy bien los temas políticos más importantes de cada época, con un líder destacado que fue creciendo en importancia a lo largo de los años: el bigrama _“estados unidos”_.
 
+Llama también mucho la atención el bigrama _“posada carriles”_, referido a Luis Posada Carriles, opositor al régimen castrista y al que se le atribuyen actos terroristas y varios intentos de asesinar a Fidel Castro a lo largo de décadas. Está claro que el líder cubano le tuvo muy presente incluso en sus alocuciones públicas.
 
+**Segunda Parte .-** grafo a partir de los bigramas, utilizando las librerías **igraph**, **ggraph** y **grid**.
 
+**Tercera Parte.-** Coocurrencias y Correlaciones. He utilizado la librería **widyr** para analizar coocurrencias y correlaciones de palabras (pairwise_count y pairwise_cor). A partir de las correlaciones he elaborado dos gráficos con palabras diferentes.
 
+### Capítulo VII: Topic Modeling. 
 
-      
-      
-    • bigramas_frecuencia_relativa.jpeg
-
-      
-En ambos gráficos se aprecia ya muy bien los temas políticos más importantes de cada época, con un líder destacado que fue creciendo en importancia a lo largo de los años: el bigrama “estados unidos”. 
-
-Llama también mucho la atención el bigrama “posada carriles”, referido a Luis Posada Carriles, opositor al régimen castrista y al que se le atribuyen actos terroristas y varios intentos de asesinar a Fidel Castro a lo largo de décadas. Está claro que el líder cubano le tuvo muy presente incluso en sus alocuciones públicas.
-
-
-
-
-
-Segunda Parte .- grafo a partir de los bigramas, utilizando las librerías igraph, ggraph y grid.
-
-    • grafo_bigramas.jpeg
-
-
-
-
-Tercera Parte .- Coocurrencias y Correlaciones. He utilizado la librería widyr para analizar coocurrencias y correlaciones de palabras (pairwise_count y pairwise_cor). A partir de las correlaciones he elaborado dos gráficos con palabras diferentes:
-
-
-    • correlaciones.jpeg
-
-Con los términos crisis, país, patria, pueblo, revolución, trabajo.
-
-
-
-    • correlaciones_Version2.jpeg
-
-Con los términos educación, guerra, hombre, muerte, mujer, revolucionario.
-
-
-Capítulo VII: Topic Modeling. 
-
-Los código de este capítulo se encuentra en los archivos:
+>Los código de este capítulo se encuentra en los archivos:
 Script_07-PRIMER_INTENTO_TextosBrutos.R
 Script_07-SEGUNDO_INTENTO_sustantivos solo.R
 
-Utilización de las librerías tm, topicmodels y scales.
-En una primera versión de este análisis (Script_07-PRIMER_INTENTO_TextosBrutos.R), partiendo de todos los textos en bruto, obtuve resultados muy decepcionantes, pues el script realiza agrupaciones muy poco significativas, casi iguales y sin un sentido muy claro. Este es un gráfico resultante de este primer intento. Está hecho sobre k=4 tópicos, pues cualquier otro valor daba resultados aún peores:
-    • topicos_desde_textos_brutos.jpeg
+**Utilización de las librerías tm, topicmodels y scales.**
 
-Por tanto decidí hacer un segundo intento (Script_07-SEGUNDO_INTENTO_sustantivos solo.R) preparando antes los textos, seleccionando sólamente los sustantivos lematizados. En la práctica esto supone hacer primero un procesado PoS Tagging como el realizado en el Script 5. De ahí pude extraer los sustantivos lematizados y hacer el análisis únicamente con ellos, con lo que los resultados del Topic Modeling finalmente fueron más significativos:
-    • topicos_desde_sustantivos_lematizados.jpg
+En una primera versión de este análisis (Script_07-PRIMER_INTENTO_TextosBrutos.R), partiendo de todos los textos en bruto, obtuve resultados muy decepcionantes, pues el script realiza agrupaciones muy poco significativas, casi iguales y sin un sentido muy claro.
 
-En este gráfico ya se aprecian 4 agrupaciones de palabras con tópicos más consistentes: un tópico centrado en la economía agraria (producción, trabajo, caña, millón, problema, tierra, industria...); educación (escuela, niño, maestro, estudiante...); y dos tópicos centrados en conceptos políticos: pueblo, país, mundo, guerra, gobierno, revolución, patria, lucha, imperialismo, dólar...
+Por tanto decidí hacer un segundo intento (Script_07-SEGUNDO_INTENTO_sustantivos solo.R) preparando antes los textos, seleccionando sólamente los sustantivos lematizados. En la práctica esto supone hacer primero un procesado PoS Tagging como el realizado en el Script 5. De ahí pude extraer los sustantivos lematizados y hacer el análisis únicamente con ellos, con lo que los resultados del Topic Modeling finalmente fueron más significativos.
+
+En este gráfico ya se aprecian 4 agrupaciones de palabras con tópicos más consistentes: un tópico centrado en la economía agraria (_producción, trabajo, caña, millón, problema, tierra, industria..._); educación (_escuela, niño, maestro, estudiante..._); y dos tópicos centrados en conceptos políticos: _pueblo, país, mundo, guerra, gobierno, revolución, patria, lucha, imperialismo, dólar..._
+
 Respecto a otro tipo de análisis como el gráfico de tópicos o las asignaciones por palabras, no he conseguido resultados interesantes, tal vez porque los textos con los que estoy trabajando son demasiado homogéneos en cuanto a temática.
-Capítulo VIII: Análisis de sentimientos. 
 
-Los código de este capítulo se encuentra en los archivos:
+### Capítulo VIII: Análisis de sentimientos. 
+
+> Los código de este capítulo se encuentra en los archivos:
 Script_08-get_sentiments.R
 Script_08-syuzhet.R
 
-He realizado este análisis por décadas, buscando una división temporal más homogénea que los períodos que venía usando hasta ahora. 
+He realizado este análisis por décadas, buscando una división temporal más homogénea que los períodos que venía usando hasta ahora.
 
-Limpieza de los discursos
-Para este análisis ha habido que hacer un trabajo de preparación de los textos un poco más complejo. Se ha hecho una reordenación de los contenidos de cada archivo descargado: el contenido de cada archivo txt de la carpeta brutosDescargados se ha recolocado en una sola cadena de caracteres, como si cada discurso estuviera almacenado en un solo párrafo. Así, al agruparlos por décadas, cada década tiene tantas cadenas de caracteres como archivos anuales agrupa. Los archivos limpios se colocan en la carpeta discursos/limpios.
+**Limpieza de los discursos**
+
+Para este análisis ha habido que hacer un trabajo de preparación de los textos un poco más complejo. Se ha hecho una reordenación de los contenidos de cada archivo descargado: el contenido de cada archivo txt de la carpeta **brutosDescargados** se ha recolocado en una sola cadena de caracteres, como si cada discurso estuviera almacenado en un solo párrafo. Así, al agruparlos por décadas, cada década tiene tantas cadenas de caracteres como archivos anuales agrupa. Los archivos limpios se colocan en la carpeta discursos/limpios.
 
 
-Primer análisis con get_sentiments.R
-Archivo: Script_08-get_sentiments.R
+#### Primer análisis con get_sentiments.R
+> Archivo: Script_08-get_sentiments.R
 
-    • analisis_sentimientos_decadas.jpeg
+Este análisis no ofrece un resultado muy interesante, en mi opinión, tal vez porque los discursos son muy homogéneos en su temática. La inmensa mayoría parecen enviar sentimientos positivos, y son pocos y puntuales los que bajan hasta niveles negativos. Quizás se puede apreciar que la década 1990-1999 tiene un perfil más positivo aún, lo cual es peculiar dado que coincide con el Período Especial, una gran crisis económica y social vivida en Cuba en esos años.
 
-Este análisis no ofrece un resultado muy interesante, en mi opinión, tal vez porque los discursos son muy homogéneos en su temática. La inmensa mayoría parecen enviar sentimientos positivos, y son pocos y puntuales los que bajan hasta niveles negativos. Quizás se puede apreciar que la década 1990-1999 tiene un perfil más positivo aún, lo cual es peculiar dado que coincide con el Período Especial, una gran crisis económica y social vivida en Cuba en esos años. 
-Análisis syuzhet
-Archivo: Script_08-syuzhet.R
-Para realizar este análisis se han utilizado los archivos por décadas que había creado en el script anterior, y que se guardaron en la carpeta discursos/porDecadas.
-En esta ocasión he optado por hacer un análisis de cada década por separado, obteniendo un gráfico por década. 
+#### Análisis syuzhet
+>Archivo: Script_08-syuzhet.R
 
-Década I
-Este sería un primer gráfico obtenido con get_sentiments.R:
-    • analisis_sentimiento_Decada-I.jpeg
+Para realizar este análisis se han utilizado los archivos por décadas que había creado en el script anterior.
 
-Este gráfico parece muy similar a los obtenidos en el scrip anterior, donde los valores positivos son más abuntantes que los negativos, aunque de un modo no tan acusado en este caso.
-
-Este es el gráfico obtenido con syuzhet a partir de los mismos datos:
-    • syuzhet_Decada-I.jpeg
+En esta ocasión he optado por hacer un análisis de cada década por separado, obteniendo un gráfico por década.
 
 No puedo decir que haya sacado ninguna conclusión con este último análisis, habida cuenta de que este gráfico parece muy distinto a los realizados con get_sentiments.R. Me temo que no sé interpretarlo muy bien y no soy capaz de explicarme la –aparente– incosistencia en los resultados de uno y otro análisis. Haciendo los cálculos con el resto de décadas obtengo inconsistencias similares, por lo que no los he añadido al trabajo.
